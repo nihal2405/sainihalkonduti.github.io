@@ -72,6 +72,7 @@ body {
     radial-gradient(ellipse at top center, var(--body-radial), transparent 55%),
     radial-gradient(circle at top left, var(--body-glow), transparent 30%),
     linear-gradient(180deg, var(--body-top) 0%, var(--body-bottom) 100%);
+  background-attachment: fixed;
   transition: background-color 220ms ease, color 220ms ease, background 220ms ease;
 }
 
@@ -822,7 +823,8 @@ body[data-theme="light"] .timeline-item.is-active {
 
 .skill-group,
 .info-card,
-.contact-panel {
+.contact-panel,
+.education-row {
   padding: 1.4rem;
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -982,9 +984,6 @@ body[data-theme="light"] .project-card-link:focus-visible .project-card {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem 2rem;
   align-items: center;
-  padding: 1.4rem 1.5rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .education-row h3 {
