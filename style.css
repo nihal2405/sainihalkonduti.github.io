@@ -56,7 +56,7 @@ body[data-theme="light"] {
 }
 
 html {
-  font-size: 125%; /* 20px base */
+  font-size: 100%; /* 16px base */
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
