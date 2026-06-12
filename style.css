@@ -1106,6 +1106,10 @@ body[data-theme="light"] .project-card-link:focus-visible .project-card {
   color: var(--accent);
 }
 
+.publication-card .pub-info {
+  flex: 1;
+}
+
 .publication-card .pub-info h3 {
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
@@ -1119,6 +1123,9 @@ body[data-theme="light"] .project-card-link:focus-visible .project-card {
 }
 
 .publication-card .pub-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   padding: 0.5rem 1rem;
   border: 1px solid var(--line-strong);
