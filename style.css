@@ -69,7 +69,7 @@ body {
   font-family: "DM Sans", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(ellipse at center, var(--body-radial), transparent 50%),
+    radial-gradient(ellipse at top center, var(--body-radial), transparent 55%),
     radial-gradient(circle at top left, var(--body-glow), transparent 30%),
     linear-gradient(180deg, var(--body-top) 0%, var(--body-bottom) 100%);
   transition: background-color 220ms ease, color 220ms ease, background 220ms ease;
