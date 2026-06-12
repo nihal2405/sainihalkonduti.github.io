@@ -1,20 +1,20 @@
 /* ===== Design Tokens: Dark Mode (default) ===== */
 :root {
-  --bg: #0f172a;
-  --bg-soft: #1e293b;
-  --panel: #1e293b;
-  --panel-alt: #0f172a;
+  --bg: #020617;
+  --bg-soft: #0f172a;
+  --panel: #0f172a;
+  --panel-alt: #020617;
   --text: #eef2ff;
   --muted: #94a3b8;
   --line: rgba(148, 163, 184, 0.08);
   --line-strong: rgba(148, 163, 184, 0.14);
   --accent: #60a5fa;
   --accent-soft: #93c5fd;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-  --body-radial: rgba(96, 165, 250, 0.09);
-  --body-glow: rgba(59, 130, 246, 0.04);
-  --body-top: #0f172a;
-  --body-bottom: #0f172a;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  --body-radial: rgba(20, 80, 190, 0.35);
+  --body-glow: rgba(59, 130, 246, 0.15);
+  --body-top: #020617;
+  --body-bottom: #000000;
   --orb-1: rgba(96, 165, 250, 0.14);
   --orb-2: rgba(59, 130, 246, 0.08);
   --orb-3: rgba(96, 165, 250, 0.11);
@@ -69,8 +69,8 @@ body {
   font-family: "DM Sans", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top center, var(--body-radial), transparent 28%),
-    radial-gradient(circle at top left, var(--body-glow), transparent 18%),
+    radial-gradient(ellipse at center, var(--body-radial), transparent 50%),
+    radial-gradient(circle at top left, var(--body-glow), transparent 30%),
     linear-gradient(180deg, var(--body-top) 0%, var(--body-bottom) 100%);
   transition: background-color 220ms ease, color 220ms ease, background 220ms ease;
 }
