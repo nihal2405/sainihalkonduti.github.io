@@ -1,0 +1,7 @@
+/* A blue curtain connects the portfolio to its project stories. */
+.page-wipe { position: fixed; inset: 0; z-index: 1000; background: #2451e6; color: #f4f1e8; display: grid; place-items: center; transform: translateY(100%); pointer-events: none; }
+.page-wipe > span { font: 400 clamp(60px, 10vw, 140px)/1 'Instrument Serif', Georgia, serif; text-align: center; }
+.page-wipe i { display: block; font: 400 13px/1.5 'Work Sans', Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; margin-top: 16px; }
+html.is-entering .page-wipe, html.is-leaving .page-wipe { transform: translateY(0); pointer-events: auto; }
+html.is-leaving { cursor: progress; }
+@media (prefers-reduced-motion: reduce) { .page-wipe { display: none; } }
