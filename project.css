@@ -29,8 +29,8 @@ h1 { font:400 clamp(60px,7vw,112px)/.96 var(--display); letter-spacing:-.035em; 
 .case-tagline { font:italic clamp(30px,3vw,46px)/1.12 var(--display); color:var(--blue); margin:0 0 44px; }
 .case-meta { display:grid; grid-template-columns:1fr 1.5fr 1fr; border-top:1px solid var(--border); padding-top:20px; gap:28px; margin-bottom:45px; }
 .case-meta div { display:flex; flex-direction:column; gap:10px; }
-.case-meta small { font-size:10px; letter-spacing:.1em; color:var(--muted); }
-.case-meta span { font-size:13px; line-height:1.6; }
+.case-meta small { font-size:12px; letter-spacing:.1em; color:var(--muted); }
+.case-meta span { font-size:15px; line-height:1.6; }
 .system-map { position:relative; padding:clamp(24px,3vw,45px); background:var(--ink); color:var(--paper); overflow:hidden; border:1px solid var(--ink); }
 .system-map::before { content:''; position:absolute; inset:0; pointer-events:none; opacity:.18; background-image:linear-gradient(#91a8ff44 1px,transparent 1px),linear-gradient(90deg,#91a8ff44 1px,transparent 1px); background-size:32px 32px; }
 .map-label,.map-footer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:10px; letter-spacing:.12em; }
@@ -49,7 +49,7 @@ h1 { font:400 clamp(60px,7vw,112px)/.96 var(--display); letter-spacing:-.035em; 
 .case-stats div { display:flex; flex-direction:column; gap:8px; border-right:1px solid var(--border); padding-right:16px; }
 .case-stats div:last-child { border:0; }
 .case-stats strong { font:400 clamp(27px,3vw,46px)/1 var(--display); color:var(--blue); overflow-wrap:anywhere; }
-.case-stats span { font-size:12px; color:var(--muted); }
+.case-stats span { font-size:14px; color:var(--muted); }
 .case-lead { font:400 clamp(26px,2.6vw,38px)/1.35 var(--display); max-width:40ch; margin:45px 0 0; }
 .case-section { padding-top:80px; margin-top:70px; border-top:1px solid var(--border); }
 h2 { font:400 clamp(34px,3.5vw,54px)/1.08 var(--display); letter-spacing:-.015em; max-width:25ch; margin:25px 0; }
@@ -118,7 +118,7 @@ h2 { font:400 clamp(34px,3.5vw,54px)/1.08 var(--display); letter-spacing:-.015em
   .map-label { font-size:9px; letter-spacing:.04em; }
   .case-stats { gap:12px; }
   .case-stats strong { font-size:30px; }
-  .case-stats span { font-size:11px; }
+  .case-stats span { font-size:13px; }
   .case-lead { font-size:28px; }
   .case-section { padding-top:40px; margin-top:50px; }
   h2 { font-size:36px; }
