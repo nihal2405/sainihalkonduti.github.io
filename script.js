@@ -1,9 +1,43 @@
 const experiences = [
-  {date:"June 2026 — Present",place:"Irvine, CA · Remote",role:"Software Engineer (AI)",company:"Infoswift Corp.",summary:"Built a secure, full-stack insurance quote portal for real-time visibility into RPA workflows across multiple carriers.",detail:"Centralized operations for 100+ agents, reduced manual status inquiries by 80%, implemented a Backend-for-Frontend identity architecture with Entra External ID and MSAL-Node, and automated zero-downtime user provisioning with Azure Cosmos DB.",metric:"80%",metricLabel:"fewer inquiries"},
-  {date:"Jan 2026 — May 2026",place:"Bloomington, Indiana",role:"Research Assistant",company:"Indiana University Bloomington",summary:"Engineered an obstetric triage classifier with 94.0% clinical safety accuracy and 93.5% F1.",detail:"Built a gated RAG architecture, curated 788 patient scenarios, and deployed a private 4-bit quantized Llama 3 8B model on HPC clusters using LoRA.",metric:"94.0%",metricLabel:"clinical safety"},
-  {date:"Sep 2025 — Dec 2025",place:"Irvine, CA · Remote",role:"Software Engineer (AI)",company:"Infoswift Corp.",summary:"Built an asynchronous Azure ETL pipeline to parallelize Gemini inference across 20,000+ files.",detail:"Secured data isolation for 100+ tenants, maintained 99.9% uptime, and reached 90% extraction accuracy while cutting processing latency from 15 minutes to 30 seconds.",metric:"98%",metricLabel:"less latency"},
-  {date:"Jun 2025 — Aug 2025",place:"Glenview, IL · On-site",role:"AI Engineer",company:"Zion Cloud Solutions (ZionAI)",summary:"Deployed distributed systems on Vertex AI to improve Q&A reasoning and reduce review latency.",detail:"Benchmarked prompts across 50+ repositories, fine-tuned Llama 3 8B with LoRA, and built type-safe validation for more than 10,000 concurrent records.",metric:"30%",metricLabel:"faster review"},
-  {date:"May 2023 — Jun 2024",place:"Hyderabad, India · On-site",role:"Software Engineer (AWS)",company:"Infoswift Corp.",summary:"Moved manual releases to automated CI/CD with AWS CodePipeline and GitHub Actions.",detail:"Reduced build times from 20 minutes to under two, cut cloud costs by 20%, improved incident response by 50%, and monitored 15+ production servers.",metric:"90%",metricLabel:"faster releases"}
+  {
+    date: "Sep 2025 — Present", place: "Irvine, CA", role: "Software Engineer (AI)", company: "Infoswift Corp.",
+    summary: "Built clinical document automation and a secure insurance quote portal.",
+    bullets: [
+      "Separated checkbox detection from document extraction to free GPU memory before vLLM loaded. Passed detection results through a JSON checkpoint and added a CPU fallback.",
+      "Built a Python and Gemini pipeline to extract clinical fields, repair malformed JSON, and validate reference ranges, cutting average manual review from 10 to 6 minutes per document.",
+      "Developed a multi-tenant FastAPI service on Azure with HMAC-signed JWTs and storage scoped to each organization.",
+      "Built a React and Express quote portal for 100+ insurance agents, cutting status inquiries by 80%. Scoped quote access to each agent and capped requests at 300 per minute per user, with an IP fallback.",
+      "Secured sign-in with Microsoft Entra External ID, MSAL-Node, server-side OAuth callbacks, and HttpOnly cookies. Linked Cosmos DB onboarding approvals to immutable user IDs and tested concurrent provisioning."
+    ],
+    metric: "80%", metricLabel: "fewer status inquiries"
+  },
+  {
+    date: "Jan 2026 — May 2026", place: "Bloomington, IN", role: "Research Assistant", company: "Indiana University Bloomington",
+    summary: "Fine-tuned and deployed a language model for obstetric triage.",
+    bullets: [
+      "Fine-tuned Llama 3 8B with LoRA on 788 records using a stratified 85/15 split. Selected checkpoints by validation loss and achieved 93.5% F1 for high-acuity detection.",
+      "Deployed 4-bit quantized inference on HPC clusters to keep patient inputs on-cluster and retrieved clinical guidelines to inform predictions."
+    ],
+    metric: "93.5%", metricLabel: "F1 for high-acuity detection"
+  },
+  {
+    date: "Jun 2025 — Aug 2025", place: "Glenview, IL", role: "AI Engineer", company: "Zion Cloud Solutions (ZionAI)",
+    summary: "Built a repository-aware coding assistant and infrastructure for model training and serving.",
+    bullets: [
+      "Embedded repository code and Q&A with Sentence Transformers (MiniLM), retrieved context from Weaviate, and generated responses with vLLM while saving conversation turns.",
+      "Configured CodeGemma-7B-IT training on 676 repository Q&A examples. Used PyTorch, PEFT LoRA, FP16, and gradient checkpointing to fit training on one GPU.",
+      "Wrote Terraform configurations for training and serving on Google Kubernetes Engine, including GPU node pools, Cloud Storage buckets, and service account permissions."
+    ],
+    metric: "676", metricLabel: "repository Q&A training examples"
+  },
+  {
+    date: "May 2023 — Jun 2024", place: "Hyderabad, India", role: "Software Engineer (Cloud/AWS)", company: "Infoswift Corp.",
+    summary: "Automated releases and managed AWS infrastructure.",
+    bullets: [
+      "Automated releases with AWS CodePipeline and GitHub Actions, configured CloudWatch alerts for 15+ servers, and tuned EC2 capacity and S3 lifecycle retention."
+    ],
+    metric: "15+", metricLabel: "servers monitored"
+  }
 ];
 
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
@@ -11,11 +45,22 @@ let reduceMotion = motionPreference.matches;
 document.body.classList.toggle("motion-enabled", !reduceMotion);
 
 const detail = {
-  date: document.querySelector("#exp-date"), place: document.querySelector("#exp-place"), role: document.querySelector("#exp-role"), company: document.querySelector("#exp-company"), summary: document.querySelector("#exp-summary"), body: document.querySelector("#exp-detail"), metric: document.querySelector("#exp-metric"), metricLabel: document.querySelector("#exp-metric-label")
+  date: document.querySelector("#exp-date"), place: document.querySelector("#exp-place"), role: document.querySelector("#exp-role"), company: document.querySelector("#exp-company"), summary: document.querySelector("#exp-summary"), bullets: document.querySelector("#exp-bullets"), metric: document.querySelector("#exp-metric"), metricLabel: document.querySelector("#exp-metric-label")
 };
 function showExperience(index) {
   const item = experiences[index]; if (!item) return;
-  detail.date.textContent=item.date; detail.place.textContent=item.place; detail.role.textContent=item.role; detail.company.textContent=item.company; detail.summary.textContent=item.summary; detail.body.textContent=item.detail; detail.metric.textContent=item.metric; detail.metricLabel.textContent=item.metricLabel;
+  detail.date.textContent = item.date;
+  detail.place.textContent = item.place;
+  detail.role.textContent = item.role;
+  detail.company.textContent = item.company;
+  detail.summary.textContent = item.summary;
+  detail.bullets.replaceChildren(...item.bullets.map(bullet => {
+    const entry = document.createElement("li");
+    entry.textContent = bullet;
+    return entry;
+  }));
+  detail.metric.textContent = item.metric;
+  detail.metricLabel.textContent = item.metricLabel;
   document.querySelectorAll("[data-experience]").forEach((button,i)=>{button.classList.toggle("is-active",i===index);button.setAttribute("aria-selected",String(i===index));});
   const card=document.querySelector(".experience-detail");
   if (!reduceMotion) card.animate([{opacity:.35,transform:"translateX(14px)"},{opacity:1,transform:"none"}],{duration:350,easing:"ease-out"});

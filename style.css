@@ -104,7 +104,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-
 .experience-detail { padding: clamp(35px,3.5vw,78px); min-height: 0; }
 .experience-detail h3 { font-size:calc(clamp(50px,min(4.8vw,61.44px),105px) * var(--type-scale)); margin-top: 50px; }
 .experience-detail h4 { font-size:calc(clamp(13px,min(1vw,12.8px),21px) * var(--type-scale)); }
-.experience-detail p { max-width: none; font-size:calc(clamp(16px,min(1.12vw,14.336px),24px) * var(--type-scale)); }
+.experience-detail p, .experience-bullets { font-size:calc(clamp(16px,min(1.12vw,14.336px),24px) * var(--type-scale)); }
+.experience-detail p { max-width: none; }
+.experience-bullets { padding-inline-start: 1.25em; color: var(--muted); line-height: 1.6; }
+.experience-bullets li + li { margin-top: .65em; }
+.experience-bullets li::marker { color: var(--blue); }
 .experience-detail .experience-summary { font-size:calc(clamp(21px,min(1.6vw,20.48px),34px) * var(--type-scale)); }
 .experience-meta { font-size:calc(clamp(10px,min(.76vw,9.728px),15px) * var(--type-scale)); }
 .experience-metric { position: static; justify-content: flex-end; margin-top: 25px; }
